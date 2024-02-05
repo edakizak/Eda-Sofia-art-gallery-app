@@ -14,8 +14,6 @@ export default function SpotlightPage({ data }) {
         name={randomPiece.name}
         pieces={data}
       />
-      {/* <ArtPieces pieces={data} />
-      <Link href="/artpieces"> Art Pieces</Link> */}
     </div>
   );
 }
