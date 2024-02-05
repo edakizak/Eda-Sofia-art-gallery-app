@@ -1,5 +1,5 @@
 import Image from "next/image";
-export default function ArtPiecePreview({ image, title, artist, name }) {
+export default function ArtPiecePreview({ image, artist, name }) {
   return (
     <>
       <div>
