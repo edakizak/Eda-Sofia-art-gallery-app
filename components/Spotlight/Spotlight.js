@@ -1,4 +1,7 @@
 import Image from "next/image";
+// import ArtPieces from "../ArtPieces/ArtPieces";
+// import { useEffect, useState } from "react";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function Spotlight({ image, artist, name }) {
   return (

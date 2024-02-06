@@ -13,19 +13,37 @@ export default function App({ Component, pageProps }) {
   );
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
+  // function handleToggleFavorite(slug) {
+  //   const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+  //   if (artPiece) {
+  //     setArtPiecesInfo(
+  //       artPiecesInfo.map((pieceInfo) =>
+  //         pieceInfo.slug === slug
+  //           ? { slug, isFavorite: !pieceInfo.isFavorite }
+  //           : pieceInfo
+  //       )
+  //     );
+  //   } else {
+  //     setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
+  //   }
+  // }
   function handleToggleFavorite(slug) {
-    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-    if (artPiece) {
-      setArtPiecesInfo(
-        artPiecesInfo.map((pieceInfo) =>
-          pieceInfo.slug === slug
-            ? { slug, isFavorite: !pieceInfo.isFavorite }
-            : pieceInfo
-        )
-      );
-    } else {
-      setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
-    }
+    updateArtPiecesInfo((draft) => {
+      const artPieceLike = draft.find((piece) => piece.slug === slug);
+      if (!artPieceLike) {
+        return [
+          ...draft,
+          {
+            slug,
+            isFavorite: true,
+            comments: [],
+          },
+        ];
+      } else {
+        artPieceLike.isFavorite = !artPieceLike.isFavorite;
+        return draft;
+      }
+    });
   }
 
   console.log("favorite", handleToggleFavorite);

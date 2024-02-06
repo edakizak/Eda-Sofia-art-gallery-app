@@ -11,7 +11,7 @@ export default function SpotlightPage({
 }) {
   const randomPiece = data[Math.floor(Math.random() * data.length)];
   console.log(randomPiece);
-  // const pieces = { data };
+  const pieces = { data };
 
   return (
     <div>

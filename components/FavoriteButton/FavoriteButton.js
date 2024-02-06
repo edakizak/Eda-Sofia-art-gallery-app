@@ -1,4 +1,6 @@
-import Image from "next/image";
+// import Image from "next/image";
+import Heart from "../../public/assets/filled.svg";
+import HeartFilled from "../../public/assets/unfilled.svg";
 
 export default function FavoriteButton({ isFavorite, slug, onToggleFavorite }) {
   function onClick() {
@@ -20,3 +22,26 @@ export default function FavoriteButton({ isFavorite, slug, onToggleFavorite }) {
     </button>
   );
 }
+
+//   if (!isFavorite) {
+//     return (
+//       <Heart
+//         className="button button__favorite--unactive"
+//         width="50"
+//         height="50"
+//         onClick={() => {
+//           onToggleFavorite(slug);
+//         }}
+//       />
+//     );
+//   } else {
+//     <HeartFilled
+//       className="button__favorite--active"
+//       width="50"
+//       height="auto"
+//       onClick={() => {
+//         onToggleFavorite(slug);
+//       }}
+//     />;
+//   }
+// }
