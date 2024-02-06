@@ -1,31 +1,23 @@
-// import ArtPieces from "../components/art_pieces/index.js";
-// import Link from "next/link";
 import Spotlight from "@/components/Spotlight/Spotlight.js";
-import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 
 export default function SpotlightPage({
-  data,
+  pieces,
   artPiecesInfo,
   onToggleFavorite,
-  isFavorite,
 }) {
-  const randomPiece = data[Math.floor(Math.random() * data.length)];
-  console.log(randomPiece);
-  const pieces = { data };
+  const spotlightPage = pieces[Math.floor(Math.random() * (pieces.length - 1))];
 
   return (
     <div>
       <Spotlight
-        image={randomPiece.imageSource}
-        artist={randomPiece.artist}
-        name={randomPiece.name}
-        pieces={data}
-        artPiecesInfo={artPiecesInfo}
-      />
-      <FavoriteButton
-        onToggleFavorite={onToggleFavorite}
-        slug={randomPiece.slug}
-        isFavorite={isFavorite}
+        image={spotlightPage.imageSource}
+        artist={spotlightPage.artist}
+        name={spotlightPage.name}
+        isFavorite={
+          artPiecesInfo.find((piece) => piece.slug === spotlightPage.slug)
+            ?.isFavorite
+        }
+        onToggleFavorite={() => onToggleFavorite(spotlightPage.slug)}
       />
     </div>
   );

@@ -2,52 +2,43 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
 import Layout from "@/components/Layout/Layout.js";
-import { useState } from "react";
+// import { useState } from "react";
+import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = async (...args) => {
+  const response = await fetch(...args);
+  if (!response.ok) {
+    throw new Error(`Request with ${JSON.stringify(args)} failed.`);
+  }
+  return await response.json();
+};
 
 export default function App({ Component, pageProps }) {
   const { data, error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher
   );
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: [] }
+  );
 
-  // function handleToggleFavorite(slug) {
-  //   const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-  //   if (artPiece) {
-  //     setArtPiecesInfo(
-  //       artPiecesInfo.map((pieceInfo) =>
-  //         pieceInfo.slug === slug
-  //           ? { slug, isFavorite: !pieceInfo.isFavorite }
-  //           : pieceInfo
-  //       )
-  //     );
-  //   } else {
-  //     setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
-  //   }
-  // }
   function handleToggleFavorite(slug) {
-    updateArtPiecesInfo((draft) => {
-      const artPieceLike = draft.find((piece) => piece.slug === slug);
-      if (!artPieceLike) {
-        return [
-          ...draft,
-          {
-            slug,
-            isFavorite: true,
-            comments: [],
-          },
-        ];
-      } else {
-        artPieceLike.isFavorite = !artPieceLike.isFavorite;
-        return draft;
-      }
-    });
+    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    if (artPiece) {
+      setArtPiecesInfo(
+        artPiecesInfo.map((pieceInfo) =>
+          pieceInfo.slug === slug
+            ? { slug, isFavorite: !pieceInfo.isFavorite }
+            : pieceInfo
+        )
+      );
+    } else {
+      setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
+    }
   }
 
   console.log("favorite", handleToggleFavorite);
-  // console.log("data", data);
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error!</h1>;
 
@@ -58,7 +49,9 @@ export default function App({ Component, pageProps }) {
       <SWRConfig value={{ fetcher }}>
         <Component
           {...pageProps}
-          data={data}
+          // data={data}
+          pieces={isLoading || error ? [] : data}
+          artPiecesInfo={artPiecesInfo}
           onToggleFavorite={handleToggleFavorite}
         />
       </SWRConfig>
