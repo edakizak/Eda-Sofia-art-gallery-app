@@ -1,11 +1,20 @@
-import ArtPieceDetails from "@/components/art-piece-details";
+import ArtPieceDetails from "../../components/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
 
-export default function ArtDetails({ pieces }) {
+export default function ArtDetails({ data }) {
   const router = useRouter();
   const { slug } = router.query;
-  const selectedArtPiece = pieces.find((piece) => piece.slug === slug);
-  console.log("pieces", pieces);
-  console.log(selectedArtPiece);
-  return <ArtPieceDetails>piece = {selectedArtPiece}</ArtPieceDetails>;
+  const selectedArtPiece = data.find((piece) => piece.slug === slug);
+  console.log("slug", slug);
+  console.log("Selected Art Piece", selectedArtPiece);
+  return (
+    <ArtPieceDetails
+      data={selectedArtPiece}
+      image={selectedArtPiece.imageSource}
+      name={selectedArtPiece.name}
+      year={selectedArtPiece.year}
+      genre={selectedArtPiece.genre}
+      artist={selectedArtPiece.artist}
+    />
+  );
 }

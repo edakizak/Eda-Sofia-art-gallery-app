@@ -1,7 +1,7 @@
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout/Layout.js";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
