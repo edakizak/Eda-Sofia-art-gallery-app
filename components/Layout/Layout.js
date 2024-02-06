@@ -1,4 +1,4 @@
-import Navigation from "../Navigation_/Navigation_.js";
+import Navigation from "../Navigation/Navigation.js";
 
 export default function Layout() {
   return (
