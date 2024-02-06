@@ -1,4 +1,4 @@
-import ArtPieces from "@/components/art_pieces";
+import ArtPieces from "../../components/ArtPieces/ArtPieces";
 
 export default function ArtPiecesList({ data }) {
   return (

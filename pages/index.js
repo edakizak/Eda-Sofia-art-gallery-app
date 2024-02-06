@@ -1,11 +1,11 @@
 // import ArtPieces from "../components/art_pieces/index.js";
 // import Link from "next/link";
-import Spotlight from "@/components/spotlight/index.js";
+import Spotlight from "@/components/Spotlight/Spotlight.js";
 
 export default function SpotlightPage({ data }) {
-  const randomPiece = data[Math.floor(Math.random() * data.length - 1)];
+  const randomPiece = data[Math.floor(Math.random() * data.length)];
   console.log(randomPiece);
-  const pieces = { data };
+  // const pieces = { data };
   return (
     <div>
       <Spotlight
