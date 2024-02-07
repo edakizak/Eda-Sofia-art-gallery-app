@@ -1,4 +1,5 @@
 import Image from "next/image";
+import CommentForm from "../CommentForm/CommentForm";
 // import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function ArtPieceDetails({ image, name, artist, year, genre }) {
@@ -9,10 +10,8 @@ export default function ArtPieceDetails({ image, name, artist, year, genre }) {
       <p> {year}</p>
       <p> {genre}</p>
       <p> {artist}</p>
-      {/* <FavoriteButton>
-        onToggleFavorite={onToggleFavorite}
-        isFavorite={isFavorite}
-      </FavoriteButton> */}
+
+      <CommentForm />
     </>
   );
 }

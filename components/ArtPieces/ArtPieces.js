@@ -1,25 +1,16 @@
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecesPreview.js";
+import React from "react";
 import styled from "styled-components";
 
 const List = styled.ul`
-  padding-left: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-
-  li {
-    width: 30rem;
-    min-width: 10rem;
-    height: 30rem;
-  }
+  list-style: none;
 `;
+
 export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
   return (
     <List>
       {pieces?.map((piece) => (
-        <li key={piece.slug}>
+        <div key={piece.slug}>
           <ArtPiecePreview
             title={piece.name}
             image={piece.imageSource}
@@ -31,7 +22,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
             }
             onToggleFavorite={() => onToggleFavorite(piece.slug)}
           />
-        </li>
+        </div>
       ))}
     </List>
   );
