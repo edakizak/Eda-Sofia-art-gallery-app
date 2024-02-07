@@ -15,6 +15,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
             title={piece.name}
             image={piece.imageSource}
             artist={piece.artist}
+            name={piece.name}
             slug={piece.slug}
             isFavorite={
               artPiecesInfo?.find((artPiece) => artPiece.slug === piece.slug)

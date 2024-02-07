@@ -1,6 +1,6 @@
 import Image from "next/image";
 import CommentForm from "../CommentForm/CommentForm";
-// import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import Link from "next/link";
 
 export default function ArtPieceDetails({ image, name, artist, year, genre }) {
   return (
@@ -12,6 +12,9 @@ export default function ArtPieceDetails({ image, name, artist, year, genre }) {
       <p> {artist}</p>
 
       <CommentForm />
+      <Link href="/art-pieces">
+        <button>← Go Back</button>
+      </Link>
     </>
   );
 }
