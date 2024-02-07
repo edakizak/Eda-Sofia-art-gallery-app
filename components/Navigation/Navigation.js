@@ -26,13 +26,13 @@ export default function Navigation() {
     <nav>
       <List role="list">
         <li>
-          <NavLink href="/art-pieces"> Pieces</NavLink>
+          <Link href="/art-pieces"> Pieces</Link>
         </li>
         <li>
-          <NavLink href="/">Spotlight</NavLink>
+          <Link href="/">Spotlight</Link>
         </li>
         <li>
-          <NavLink href="/favorites">Favorites</NavLink>
+          <Link href="/favorites">Favorites</Link>
         </li>
       </List>
     </nav>
