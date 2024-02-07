@@ -10,7 +10,7 @@ const Card = styled.ul`
   align-items: center;
 
   h2 {
-    color: #d1f90c;
+    color: black
     text-decoration: none;
   }
 `;
