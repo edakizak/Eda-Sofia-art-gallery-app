@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Layout from "@/components/Layout/Layout.js";
 // import { useState } from "react";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
+import ArtPieces from "@/components/ArtPieces/ArtPieces";
 
 const fetcher = async (...args) => {
   const response = await fetch(...args);
@@ -38,7 +39,11 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  // console.log("favorite", handleToggleFavorite);
+  //  handleSubmitCommentForm = (e) => {
+  //   artPiecesInfo.setState({
+  //     commentValue: e.target.value,
+  // })
+
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error!</h1>;
 
