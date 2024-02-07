@@ -14,7 +14,7 @@ export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
       aria-label={isFavorite ? "unlike" : "like"}
     >
       <Image
-        src={isFavorite ? "/assets/filled.svg" : "/assets/unfilled.svg"}
+        src={isFavorite ? "/assets/filledicon.svg" : "/assets/unfilledicon.svg"}
         width={40}
         height={40}
         alt={isFavorite ? "Liked" : "Not liked"}

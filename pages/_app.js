@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  console.log("favorite", handleToggleFavorite);
+  // console.log("favorite", handleToggleFavorite);
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error!</h1>;
 
