@@ -1,18 +1,7 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
+// import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-export default function ArtPieceDetails({
-  image,
-  name,
-  artist,
-  year,
-  genre,
-  onToggleFavorite,
-  isFavorite,
-}) {
-  const router = useRouter();
-
+export default function ArtPieceDetails({ image, name, artist, year, genre }) {
   return (
     <>
       <Image src={image} height={144} width={144} alt={name} />
@@ -20,10 +9,10 @@ export default function ArtPieceDetails({
       <p> {year}</p>
       <p> {genre}</p>
       <p> {artist}</p>
-      <FavoriteButton>
+      {/* <FavoriteButton>
         onToggleFavorite={onToggleFavorite}
         isFavorite={isFavorite}
-      </FavoriteButton>
+      </FavoriteButton> */}
     </>
   );
 }

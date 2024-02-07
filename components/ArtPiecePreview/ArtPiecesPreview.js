@@ -10,12 +10,11 @@ export default function ArtPiecePreview({
   onToggleFavorite,
   isFavorite,
 }) {
-  console.log("ll", onToggleFavorite);
   return (
     <>
       <FavoriteButton
         onToggleFavorite={onToggleFavorite}
-        // onClick={() => onToggleFavorite(slug)}
+        slug={slug}
         isFavorite={isFavorite}
       />
 
