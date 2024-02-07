@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const List = styled.nav`
+const NavBar = styled.nav`
   background: black;
   position: fixed;
   display: flex;
@@ -9,32 +9,30 @@ const List = styled.nav`
   justify-content: center;
   bottom: 0;
   width: 100%;
-  height: 100 px;
+  height: 500 px;
   color: #d1f90c;
   list-style-type: none;
-
 }
 `;
 
 const NavLink = styled.li`
   list-style-type: none;
   justify-content: space-between;
+  font-size: 5px;
 `;
 
 export default function Navigation() {
   return (
-    <nav>
-      <List role="list">
-        <li>
-          <Link href="/art-pieces"> Pieces</Link>
-        </li>
-        <li>
-          <Link href="/">Spotlight</Link>
-        </li>
-        <li>
-          <Link href="/favorites">Favorites</Link>
-        </li>
-      </List>
-    </nav>
+    <NavBar>
+      <li>
+        <Link href="/art-pieces"> Pieces</Link>
+      </li>
+      <li>
+        <Link href="/">Spotlight</Link>
+      </li>
+      <li>
+        <Link href="/favorites">Favorites</Link>
+      </li>
+    </NavBar>
   );
 }

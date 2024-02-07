@@ -2,7 +2,6 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
 import Layout from "@/components/Layout/Layout.js";
-// import { useState } from "react";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
 
@@ -39,11 +38,27 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  //  handleSubmitCommentForm = (e) => {
-  //   artPiecesInfo.setState({
-  //     commentValue: e.target.value,
-  // })
-
+  function addComment(slug, newComment) {
+    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    if (artPiece) {
+      setArtPiecesInfo(
+        artPiecesInfo.map((pieceInfo) => {
+          if (pieceInfo.slug === slug) {
+            return pieceInfo.comments
+              ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
+              : { ...pieceInfo, comments: [newComment] };
+          } else {
+            return pieceInfo;
+          }
+        })
+      );
+    } else {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { slug, isFavorite: false, comments: [newComment] },
+      ]);
+    }
+  }
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error!</h1>;
 
@@ -58,6 +73,7 @@ export default function App({ Component, pageProps }) {
           pieces={isLoading || error ? [] : data}
           artPiecesInfo={artPiecesInfo}
           onToggleFavorite={handleToggleFavorite}
+          addComment={addComment}
         />
       </SWRConfig>
     </>
