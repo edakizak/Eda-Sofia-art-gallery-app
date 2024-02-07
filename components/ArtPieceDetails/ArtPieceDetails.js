@@ -20,10 +20,10 @@ export default function ArtPieceDetails({
       <p> {year}</p>
       <p> {genre}</p>
       <p> {artist}</p>
-      <FavoriteButton>
+      <FavoriteButton
         onToggleFavorite={onToggleFavorite}
         isFavorite={isFavorite}
-      </FavoriteButton>
+      />
     </>
   );
 }

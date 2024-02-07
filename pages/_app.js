@@ -1,5 +1,4 @@
 import GlobalStyle from "../styles";
-import { SWRConfig } from "swr";
 import useSWR from "swr";
 import Layout from "@/components/Layout/Layout.js";
 import { useState } from "react";
@@ -11,10 +10,17 @@ export default function App({ Component, pageProps }) {
     "https://example-apis.vercel.app/api/art",
     fetcher
   );
+
+  // console.log("slug", slug);
+
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
   function handleToggleFavorite(slug) {
+    console.log("######## handleToggleFavorite ########");
     const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    console.log("artPiecesInfo: ", artPiecesInfo);
+    console.log("slug: ", slug);
+    console.log("artPiece: ", artPiece);
     if (artPiece) {
       setArtPiecesInfo(
         artPiecesInfo.map((pieceInfo) =>
@@ -28,7 +34,7 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  console.log("favorite", handleToggleFavorite);
+  // console.log("favorite", handleToggleFavorite);
   // console.log("data", data);
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error!</h1>;
@@ -37,13 +43,12 @@ export default function App({ Component, pageProps }) {
     <>
       <Layout />
       <GlobalStyle />
-      <SWRConfig value={{ fetcher }}>
-        <Component
-          {...pageProps}
-          data={data}
-          onToggleFavorite={handleToggleFavorite}
-        />
-      </SWRConfig>
+      <Component
+        {...pageProps}
+        data={data}
+        onToggleFavorite={handleToggleFavorite}
+        artPiecesInfo={artPiecesInfo}
+      />
     </>
   );
 }
