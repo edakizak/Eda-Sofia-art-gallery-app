@@ -2,19 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import styled from "styled-components";
-
 const Card = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  justify-content: flex-start;
+  align-items: flex-start;
   h2 {
     color: black;
     text-decoration: none;
   }
 `;
-
+const StyledImage = styled(Image)`
+  margin-top: 50px;
+  margin-bottom: 20px;
+`;
 export default function ArtPiecePreview({
   slug,
   image,
@@ -27,11 +28,11 @@ export default function ArtPiecePreview({
     <>
       <Card>
         <Link href={`/art-pieces/${slug}`}>
-          <Image
+          <StyledImage
             className="art-pieces-image"
             src={image}
-            height={400}
-            width={600}
+            height={500}
+            width={500}
             alt={name}
           />
         </Link>

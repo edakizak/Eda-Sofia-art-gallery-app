@@ -26,7 +26,7 @@ const Textarea = styled.textarea`
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  color: #dad7d7;
+  color: black;
   background-color: #eeeeee;
   border-style: solid;
   border-width: 2px 2px 2px 2px;
@@ -57,18 +57,18 @@ const Button = styled.button`
   }
 `;
 
-export default function CommentForm({ onSubmitComment }) {
+export default function CommentForm({ addComment, slug }) {
   function handleSubmit(event) {
     event.preventDefault();
     const { comment } = event.target.elements;
-    addComment(comment.value);
+    addComment(slug, comment.value);
     event.target.reset();
   }
   return (
     <Form onSubmit={handleSubmit}>
       <Label htmlFor="comment"> Comment: </Label>
-      <Textarea type="text" />
-      <Button className="comment-submit-button" type="submit">
+      <Textarea type="text" name="comment" />
+      <Button className="comment-submit-button" type="submit" required>
         Submit
       </Button>
     </Form>

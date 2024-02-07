@@ -1,13 +1,9 @@
 export default function Comments({ comments }) {
   return (
-    <div role="list">
+    <List role="list">
       {comments.map((comment, index) => (
-        <li key={index}>
-          <p>
-            <q>{comment}</q>
-          </p>
-        </li>
+        <li key={index}></li>
       ))}
-    </div>
+    </List>
   );
 }

@@ -5,6 +5,8 @@ export default function ArtDetails({
   pieces,
   artPiecesInfo,
   onToggleFavorite,
+  addComment,
+  comments,
 }) {
   const router = useRouter();
   const { slug } = router.query;
@@ -22,6 +24,8 @@ export default function ArtDetails({
         artist={selectedArtPiece.artist}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={onToggleFavorite}
+        addComment={addComment}
+        slug={slug}
       />
     </>
   );
