@@ -10,7 +10,7 @@ const Card = styled.ul`
   align-items: center;
 
   h2 {
-    color: black
+    color: black;
     text-decoration: none;
   }
 `;
@@ -34,18 +34,16 @@ export default function ArtPiecePreview({
             width={600}
             alt={name}
           />
-          {/* <h3 className="art-pieces-name">{name}</h3>
-          <h3 className="art-pieces-artist">{artist}</h3> */}
-          <h2>
-            {name} <br />
-            {artist}
-          </h2>
         </Link>
         <FavoriteButton
           onToggleFavorite={onToggleFavorite}
           slug={slug}
           isFavorite={isFavorite}
         />
+        <h2>
+          {name} <br />
+          {artist}
+        </h2>
       </Card>
     </>
   );
