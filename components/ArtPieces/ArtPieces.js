@@ -1,34 +1,6 @@
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecesPreview.js";
 import styled from "styled-components";
-// import FavoriteButton from "../FavoriteButton/FavoriteButton.js";
 
-// export default function ArtPieces({
-//   pieces,
-//   onToggleFavorite,
-//   isFavorite,
-//   slug,
-// }) {
-//   return (
-//     <div>
-//       {pieces.map((piece) => (
-//         <li key={piece.slug}>
-//           <ArtPiecePreview
-//             image={piece.imageSource}
-//             artist={piece.artist}
-//             slug={piece.slug}
-//             name={piece.name}
-//             // onToggleFavorite={onToggleFavorite}
-//           />
-//         </li>
-//       ))}
-//       <FavoriteButton
-//         onToggleFavorite={onToggleFavorite}
-//         slug={slug}
-//         isFavorite={isFavorite}
-//       />
-//     </div>
-//   );
-// }
 const List = styled.ul`
   padding-left: 0;
   margin: 0;
